@@ -1,0 +1,38 @@
+<mat-grid-list cols="4">
+  <mat-grid-tile>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-card fxFlex="100">
+      <mat-card-title>
+        <mat-icon>lock</mat-icon>
+        Authentification
+      </mat-card-title>
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+          <div fxFlex="100">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+              <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                <mat-form-field fxFlex="100">
+                  <input type="text" matInput placeholder="Identifiant" value="" formControlName="usernameOrEmail">
+                </mat-form-field>
+              </div>
+              <div fxLayout="row">
+                <mat-form-field fxFlex="100">
+                  <input type="password" matInput placeholder="Mot de passe" value="" formControlName="password">
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-raised-button [disabled]="loginForm.invalid" color="success">
+                  <mat-icon>input</mat-icon>
+                  Se connecter
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>
+

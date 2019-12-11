@@ -1,0 +1,347 @@
+<!-- Liste -->
+<mat-card *ngIf="isEdit===false">
+  <mat-card-header>
+    <mat-card-title>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [disabled]="showFormAdd===true" color="primary" (click)='showForm()'>
+          <mat-icon>add</mat-icon>
+          <span>Ajouter un étudiant</span>
+        </button>
+      </mat-menu>
+      Liste des étudiants
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxFlex="100">
+      <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex="100">
+          <mat-card *ngIf="showFormAdd">
+            <form [formGroup]="studentForm" (ngSubmit)="onSubmitForm()">
+              <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                <mat-form-field fxFlex="50">
+                  <input type="text" matInput placeholder="Prénom" value="" formControlName="firstName">
+                </mat-form-field>
+                <mat-form-field fxFlex="50">
+                  <input type="text" matInput placeholder="Nom" value="" formControlName="lastName">
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                <mat-form-field fxFlex="50">
+                  <input matInput [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field fxFlex="50">
+                  <input type="text" matInput placeholder="Lieu de naissance" value="" formControlName="placeOfBirth">
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                <mat-form-field fxFlex="50">
+                  <mat-label>Sexe</mat-label>
+                  <mat-select formControlName="gender" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let gender of genders" [value]="gender">
+                      {{gender.value}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <fieldset>
+                <legend>Adresse</legend>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Email" value="" formControlName="email">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Téléphone" value="" formControlName="mainPhone">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <textarea matInput placeholder="Adresse" formControlName="address"></textarea>
+                  </mat-form-field>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Situation de famille</legend>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Prénom du père" value="" formControlName="fatherFirstname">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Nom du père" value="" formControlName="fatherLastname">
+                  </mat-form-field>
+
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Prénom de la mère" value=""
+                           formControlName="motherFirstname">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Nom de la mère" value="" formControlName="motherLastname">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Profession du père" value=""
+                           formControlName="fatherProfession">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Profession de la mère" value=""
+                           formControlName="motherProfession">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Statut marital" value="" formControlName="maritalStatus">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="number" matInput placeholder="Nombre d'enfants" value="" formControlName="nbChild">
+                  </mat-form-field>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Information Tuteur</legend>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Prénom du tuteur" value="" formControlName="guardianFirstname">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Nom du tuteur" value="" formControlName="guardianLastname">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Téléphone 1" value="" formControlName="guardianMainPhone">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Téléphone 2" value="" formControlName="guardianSecondPhone">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <textarea matInput placeholder="Adresse" formControlName="guardianAddress"></textarea>
+                  </mat-form-field>
+
+                </div>
+              </fieldset>
+              <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign.xs="center center" fxLayout.xs="column"
+                   fxLayoutAlign="start center">
+                <div fxFlex="50">
+                  <button mat-raised-button [disabled]="studentForm.invalid" color="success">
+                    <mat-icon>add</mat-icon>
+                    Enregistrer
+                  </button>
+                </div>
+                <div fxFlex="50">
+                  <button mat-raised-button color="cancel" (click)="showFormAdd=false">
+                    <mat-icon>undo</mat-icon>
+                    Annuler
+                  </button>
+                </div>
+              </div>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex="100">
+          <div class="table-container mat-elevation-z8 mt">
+            <table fxFlex="100" mat-table [dataSource]="students" matSort>
+              <ng-container matColumnDef="registrationNumber">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Matricule</th>
+                <td mat-cell *matCellDef="let element"> {{ element.registrationNumber }} </td>
+              </ng-container>
+              <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Prénom</th>
+                <td mat-cell *matCellDef="let element"> {{ element.firstName }} </td>
+              </ng-container>
+              <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+                <td mat-cell *matCellDef="let element"> {{ element.lastName }} </td>
+              </ng-container>
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item color="primary" (click)='editStudent(element.id)'>
+                      <mat-icon>edit</mat-icon>
+                      <span>Modifier</span>
+                    </button>
+                    <button mat-menu-item color="primary" (click)='viewStudent(element.id)'>
+                      <mat-icon>visibility</mat-icon>
+                      <span>Fiche</span>
+                    </button>
+                    <button mat-menu-item color="primary" (click)='deleteStudent(element.id)'>
+                      <mat-icon>delete</mat-icon>
+                      <span>Supprimer</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign.xs="center center" fxLayout.xs="column"
+           fxLayoutAlign="center center">
+        <div fxFlex="100">
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10"></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<!-- Formulaire de modification -->
+<mat-card *ngIf="isEdit===true">
+  <mat-card-header>
+    <mat-card-title>
+      Formulaire de modification
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxFlex="100">
+      <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex="100">
+          <mat-card >
+            <form [formGroup]="studentFormEdit" (ngSubmit)="onSubmitFormEdit()">
+              <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                <mat-form-field fxFlex="50">
+                  <input type="text" matInput placeholder="Prénom" value="" formControlName="firstName">
+                </mat-form-field>
+                <mat-form-field fxFlex="50">
+                  <input type="text" matInput placeholder="Nom" value="" formControlName="lastName">
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                <mat-form-field fxFlex="50">
+                  <input matInput [matDatepicker]="picker" placeholder="Date de naissance" formControlName="birthDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field fxFlex="50">
+                  <input type="text" matInput placeholder="Lieu de naissance" value="" formControlName="placeOfBirth">
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                <mat-form-field fxFlex="50">
+                  <mat-label>Sexe</mat-label>
+                  <mat-select formControlName="gender" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let gender of genders" [value]="gender">
+                      {{gender.value}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <fieldset>
+                <legend>Adresse</legend>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Email" value="" formControlName="email">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Téléphone" value="" formControlName="mainPhone">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <textarea matInput placeholder="Adresse" formControlName="address"></textarea>
+                  </mat-form-field>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Situation de famille</legend>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Prénom du père" value="" formControlName="fatherFirstname">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Nom du père" value="" formControlName="fatherLastname">
+                  </mat-form-field>
+
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Prénom de la mère" value=""
+                           formControlName="motherFirstname">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Nom de la mère" value="" formControlName="motherLastname">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Profession du père" value=""
+                           formControlName="fatherProfession">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Profession de la mère" value=""
+                           formControlName="motherProfession">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Statut marital" value="" formControlName="maritalStatus">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="number" matInput placeholder="Nombre d'enfants" value="" formControlName="nbChild">
+                  </mat-form-field>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Information Tuteur</legend>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Prénom du tuteur" value="" formControlName="guardianFirstname">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Nom du tuteur" value="" formControlName="guardianLastname">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Téléphone 1" value="" formControlName="guardianMainPhone">
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <input type="text" matInput placeholder="Téléphone 2" value="" formControlName="guardianSecondPhone">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <mat-form-field fxFlex="50">
+                    <textarea matInput placeholder="Adresse" formControlName="guardianAddress"></textarea>
+                  </mat-form-field>
+
+                </div>
+              </fieldset>
+              <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign.xs="center center" fxLayout.xs="column"
+                   fxLayoutAlign="start center">
+                <div fxFlex="50">
+                  <button mat-raised-button [disabled]="studentFormEdit.invalid" color="success">
+                    <mat-icon>add</mat-icon>
+                    Enregistrer
+                  </button>
+                </div>
+                <div fxFlex="50">
+                  <button mat-raised-button color="cancel" (click)="isEdit=false">
+                    <mat-icon>undo</mat-icon>
+                    Annuler
+                  </button>
+                </div>
+              </div>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

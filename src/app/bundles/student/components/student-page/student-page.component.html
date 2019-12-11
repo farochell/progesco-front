@@ -1,0 +1,185 @@
+<mat-tab-group>
+  <mat-tab label="Informations">
+    <div fxLayout="row"  fxLayout.xs="column" fxLayout.sm="column">
+      <div fxFlex="50">
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+          <div fxFlex="100">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Informations générales</mat-card-title>
+              </mat-card-header>
+              <mat-list>
+                <mat-list-item>
+                  <div fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                      <div fxFlex="40" class="mat-label">Matricule</div>
+                      <div fxFlex="60">{{student.registrationNumber}}</div>
+                    </div>
+                  </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <div fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                      <div fxFlex="40" class="mat-label">Prénom</div>
+                      <div fxFlex="60">{{student.firstName}}</div>
+                    </div>
+                  </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <div fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                      <div fxFlex="40" class="mat-label">Nom</div>
+                      <div fxFlex="60">{{student.lastName}}</div>
+                    </div>
+                  </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <div fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                      <div fxFlex="40" class="mat-label">Date de naissance</div>
+                      <div fxFlex="60">{{student.birthDate}}</div>
+                    </div>
+                  </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <div fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                      <div fxFlex="40" class="mat-label">Lieu de naissance</div>
+                      <div fxFlex="60">{{student.placeOfBirth}}</div>
+                    </div>
+                  </div>
+                </mat-list-item>
+              </mat-list>
+            </mat-card>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+          <div fxFlex="100">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Adresse</mat-card-title>
+              </mat-card-header>
+              <mat-list>
+                <mat-list-item>
+                  <div fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                      <div fxFlex="40" class="mat-label">Téléphone</div>
+                      <div fxFlex="60">{{student.mainPhone}}</div>
+                    </div>
+                  </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <div fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                      <div fxFlex="40" class="mat-label">Email</div>
+                      <div fxFlex="60">{{student.email}}</div>
+                    </div>
+                  </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                  <div fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                      <div fxFlex="40" class="mat-label">Adresse</div>
+                      <div fxFlex="60">{{student.address}}</div>
+                    </div>
+                  </div>
+                </mat-list-item>
+              </mat-list>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <!-- Colonne de droite -->
+      <div fxFlex="50">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Situation de famille</mat-card-title>
+          </mat-card-header>
+          <mat-list>
+            <mat-list-item>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex="40" class="mat-label">Situation de famille</div>
+                  <div fxFlex="60">{{student.maritalStatus}}</div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex="40" class="mat-label">Nombre d'enfants</div>
+                  <div fxFlex="60">{{student.nbChild}}</div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex="40" class="mat-label">Prénom du père</div>
+                  <div fxFlex="60">{{student.fatherFirstname}}</div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex="40" class="mat-label">Nom du père</div>
+                  <div fxFlex="60">{{student.fatherLastname}}</div>
+                </div>
+              </div>
+              </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex="40" class="mat-label">Profession du père</div>
+                  <div fxFlex="60">{{student.fatherProfession}}</div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex="40" class="mat-label">Prénom de la mère</div>
+                  <div fxFlex="60">{{student.motherFirstname}}</div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex="40" class="mat-label">Nom de la mère</div>
+                  <div fxFlex="60">{{student.motherLastname}}</div>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <div fxFlex="100">
+                <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column" fxLayout.sm="column">
+                  <div fxFlex="40" class="mat-label">Profession de la mère</div>
+                  <div fxFlex="60">{{student.motherProfession}}</div>
+                </div>
+              </div>
+            </mat-list-item>
+
+          </mat-list>
+        </mat-card>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Inscriptions">
+    <app-educational-registration></app-educational-registration>
+  </mat-tab>
+</mat-tab-group>

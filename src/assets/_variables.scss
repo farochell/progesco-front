@@ -1,0 +1,11 @@
+$material-icons-font-path: '~material-icons/iconfont/';
+$material-icons-codepoints: () !default; /* Sass map of icon names and codepoints */
+$material-icons-font-path: '' !default;
+$material-icons-font-name: 'MaterialIcons-Regular' !default;
+$material-icons-font-size: 24px !default;
+$material-icons-font-family: 'Material Icons' !default;
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~material-icons/iconfont/material-icons.scss';
+$primary-color: #424242;
+
+

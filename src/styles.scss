@@ -1,1 +1,126 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/variables';
+body {
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  min-height: 100vh;
+  flex-direction: column;
+  margin:0;
+  background-color: $primary-color;
+}
+
+.progesco-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-tab-label-content {
+  color: #e0f7fa;
+}
+
+.mat-table td {
+  background-color: #0A121B;
+  color: #e0f7fa;
+}
+
+.mat-table th {
+  background-color: #0A121B;
+  color: #60ad5e;
+}
+
+.mat-sort-header-button {
+  text-transform: uppercase;
+}
+
+.mat-paginator {
+  background-color: #0A121B;
+  color: #60ad5e;
+}
+
+.progesco-is-mobile .progesco-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.progesco-app-name {
+  margin-left: 8px;
+}
+
+.progesco-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.progesco-is-mobile .progesco-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+mat-sidenav .mat-drawer-inner-container, .mat-tree-node {
+  background-color: #212121;
+  width: 250px;
+  color: #e0f7fa;
+}
+
+.mat-nested-tree-node.ng-star-inserted {
+  background-color: #101E26;
+}
+
+.mat-form-field-label-wrapper label.mat-form-field-label {
+  color: #e0f7fa;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  color: #000;
+}
+
+.mat-column-actions {
+  width: 30px;
+}
+
+fieldset {
+  border:1px solid #212121;
+  margin: 10px 0;
+}
+
+legend {
+  background-color: #212121;
+  padding:3px;
+}
+
+.mat-success {
+  background-color: #60ad5e;
+}
+
+.mat-cancel {
+  background-color: #E65100;
+}
+
+.mat-toolbar {
+  border-bottom: 1px solid darkgreen;
+}
+
+.success-snack {
+  background: #A4C636;
+}
+
+.error-snack {
+  background: #c62828;
+  color: #fff;
+}
+
+.warning-snack {
+  background: #ffa000;
+  color: #fff;
+}
+
+

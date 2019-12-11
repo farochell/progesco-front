@@ -1,0 +1,33 @@
+<mat-tab-group>
+  <mat-tab label="Années scolaires">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Liste des années scolaires</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="table-container mat-elevation-z8 mt">
+          <table fxFlex="100" mat-table [dataSource]="listschoolyears" matSort>
+            <ng-container matColumnDef="label">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Libellé</th>
+              <td mat-cell *matCellDef="let element"> {{ element.label }} </td>
+            </ng-container>
+            <ng-container matColumnDef="startDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de début </th>
+              <td mat-cell *matCellDef="let element"> {{ element.startDate }} </td>
+            </ng-container>
+            <ng-container matColumnDef="endDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin </th>
+              <td mat-cell *matCellDef="let element"> {{ element.endDate }} </td>
+            </ng-container>
+            <ng-container matColumnDef="active">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Est active </th>
+              <td mat-cell *matCellDef="let element"> {{ element.active }} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

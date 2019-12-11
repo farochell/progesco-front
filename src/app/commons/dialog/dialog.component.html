@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>{{ data.titre }}</h2>
+<mat-dialog-content class="mat-typography">
+  {{ data.contenu }}
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="btn-canceled">Annuler</button>
+  <button mat-button color="btn-valid" [mat-dialog-close]="true" cdkFocusInitial>Valider</button>
+</mat-dialog-actions>
